@@ -9,4 +9,6 @@ bearbeiten oder löschen können und andere Blogs eine antwort dazu schreiben k�
 
 
 [![CI](https://github.com/s0565958/webtechprojekt/actions/workflows/tests.yml/badge.svg)](https://github.com/s0565958/webtechprojekt/actions/workflows/tests.yml)
+
+
 #ReadMe
