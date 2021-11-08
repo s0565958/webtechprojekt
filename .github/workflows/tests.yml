@@ -2,7 +2,6 @@ name: CI
 
 on: [ push ]
 
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -14,4 +13,4 @@ jobs:
           distribution: "adopt"
           java-version: 16
       - name: clean build
-        run: ./gradlew.bat clean test --info --stacktrace
+        run: ./gradlew clean test --info --stacktrace
