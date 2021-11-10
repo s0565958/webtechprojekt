@@ -25,7 +25,7 @@ public class Person {
         return firstName;
     }
 
-    public void setName(String FirstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -44,4 +44,5 @@ public class Person {
     public void setVaccinated(boolean vaccinated) {
         this.vaccinated = vaccinated;
     }
+
 }
