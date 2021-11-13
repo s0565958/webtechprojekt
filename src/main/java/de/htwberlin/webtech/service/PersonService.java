@@ -25,6 +25,12 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
+    public Person findById(Long id){
+        var personEntity = personRepository.findById(id);
+        return personEntity.map(this::transformEntity).orElse(null);
+
+    }
+
     public Person create(PersonCreateRequest request){
         var personEntity = new PersonEntity(request.getFirstName(), request.getFirstName(), request.isVaccinated());
         personEntity = personRepository.save(personEntity);
