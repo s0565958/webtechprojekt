@@ -16,13 +16,13 @@ public class PersonEntity {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "is_vaccinated")
-    private Boolean vaccinated;
+    @Column(name = "user_name")
+    private String userName;
 
-    public PersonEntity(String firstName, String lastName, Boolean vaccinated) {
+    public PersonEntity(String firstName, String lastName, String userName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.vaccinated = vaccinated;
+        this.userName = userName;
     }
 
     protected PersonEntity() {}
@@ -47,11 +47,11 @@ public class PersonEntity {
         this.lastName = lastName;
     }
 
-    public Boolean getVaccinated() {
-        return vaccinated;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setVaccinated(Boolean vaccinated) {
-        this.vaccinated = vaccinated;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }
