@@ -12,6 +12,8 @@ public class PostManipulationRequest {
         this.username = username;
     }
 
+    public PostManipulationRequest() {}
+
     public String getTitle() {
         return title;
     }

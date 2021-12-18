@@ -12,6 +12,8 @@ public class AutorManipulationRequest {
         this.email = email;
     }
 
+    public  AutorManipulationRequest() {}
+
     public String getUsername() {
         return username;
     }
