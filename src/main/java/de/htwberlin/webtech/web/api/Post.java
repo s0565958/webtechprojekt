@@ -7,15 +7,12 @@ public class Post {
     private String username;
     private String body;
 
-    public Post(long id, String postEntityTitle, String title, String content, String username, String body) {
+    public Post(long id, String title, String content, String username, String body) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.username = username;
         this.body = body;
-    }
-
-    public Post(Long id, String title, String content, String username, String body) {
     }
 
     public long getId() {
@@ -58,3 +55,4 @@ public class Post {
         this.body = body;
     }
 }
+
