@@ -19,15 +19,18 @@ public class PostEntity {
     @Column(name = "username", nullable = false)
     private String username;
 
+    @Column(name = "body", nullable = false)
+    private String body;
 
-    public PostEntity(String title, String content, String username) {
+
+    public PostEntity(String title, String content, String username, String body) {
         this.title = title;
         this.content = content;
         this.username = username;
+        this.body = body;
     }
 
-    protected PostEntity() {
-    }
+    protected PostEntity() {}
 
     public Long getId() {
         return id;
@@ -55,5 +58,13 @@ public class PostEntity {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }

@@ -5,11 +5,13 @@ public class PostManipulationRequest {
     private String title;
     private String content;
     private String username;
+    private String body;
 
-    public PostManipulationRequest(String title, String content, String username) {
+    public PostManipulationRequest(String title, String content, String username, String body) {
         this.title = title;
         this.content = content;
         this.username = username;
+        this.body = body;
     }
 
     public PostManipulationRequest() {}
@@ -36,5 +38,13 @@ public class PostManipulationRequest {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }

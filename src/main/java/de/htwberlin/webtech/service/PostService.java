@@ -31,7 +31,7 @@ public class PostService {
     }
 
     public de.htwberlin.webtech.web.api.Post create(PostManipulationRequest request){
-        var postEntity = new PostEntity(request.getTitle(), request.getContent(), request.getUsername());
+        var postEntity = new PostEntity(request.getTitle(), request.getContent(), request.getUsername(), request.getBody());
         postEntity = postRepository.save(postEntity);
         return transformEntity(postEntity);
     }
@@ -46,6 +46,7 @@ public class PostService {
         postEntity.setTitle(request.getTitle());
         postEntity.setContent(request.getContent());
         postEntity.setUsername(request.getUsername());
+        postEntity.setBody(request.getBody());
         postEntity = postRepository.save(postEntity);
 
         return transformEntity(postEntity);
@@ -64,7 +65,8 @@ public class PostService {
                 postEntity.getId(),
                 postEntity.getTitle(),
                 postEntity.getContent(),
-                postEntity.getUsername()
+                postEntity.getUsername(),
+                postEntity.getBody()
         );
 
     }
