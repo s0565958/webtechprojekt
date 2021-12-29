@@ -5,12 +5,17 @@ public class Post {
     private String title;
     private String content;
     private String username;
+    private String body;
 
-    public Post(long id, String title, String content, String username) {
+    public Post(long id, String postEntityTitle, String title, String content, String username, String body) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.username = username;
+        this.body = body;
+    }
+
+    public Post(Long id, String title, String content, String username, String body) {
     }
 
     public long getId() {
@@ -43,5 +48,13 @@ public class Post {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }
