@@ -18,7 +18,7 @@ public class PostRestController {
     public PostRestController(PostService postService) {
         this.postService = postService;
     }
-    
+
     @GetMapping(path = "/api/v1/posts")
     public ResponseEntity<List<Post>> fetchPosts(){
         return ResponseEntity.ok(postService.findAll());
@@ -33,9 +33,15 @@ public class PostRestController {
 
     @PostMapping(path = "/api/v1/posts")
     public ResponseEntity<Void> createpost(@RequestBody PostManipulationRequest request) throws URISyntaxException {
-       var post = postService.create(request);
-       URI uri = new URI("/api/v1/posts/" + post.getId());
-       return ResponseEntity.created(uri).build();
+        var valid = validate(request);
+        if (valid) {
+            var post = postService.create(request);
+            URI uri = new URI("/api/v1/posts/" + post.getId());
+            return ResponseEntity.created(uri).build();
+        }
+        else {
+            return ResponseEntity.badRequest().build();
+        }
 
     }
 
@@ -49,7 +55,18 @@ public class PostRestController {
     @DeleteMapping(path = "/api/v1/posts/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         boolean successful = postService.deleteById(id);
-        return successful ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+        return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+
+    private boolean validate(PostManipulationRequest request){
+       return request.getUsername() != null
+           && !request.getUsername().isBlank()
+           && request.getTitle() != null
+           && !request.getTitle().isBlank()
+           && request.getContent() != null
+           && !request.getContent().isBlank()
+           && request.getBody() != null
+           && !request.getBody().isBlank();
     }
 
 }
