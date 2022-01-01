@@ -1,18 +1,19 @@
 package de.htwberlin.webtech.web.api;
 
+import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+
 public class PostManipulationRequest {
 
+    @Size(min = 2, message = "Please Provide 3 or more Charakters.")
+    private String body;
+    private String username;
+
+    @NotNull(message = "Please Provide")
     private String title;
     private String content;
-    private String username;
-    private String body;
 
-    public PostManipulationRequest(String title, String content, String username, String body) {
-        this.title = title;
-        this.content = content;
-        this.username = username;
-        this.body = body;
-    }
+
 
     public PostManipulationRequest() {}
 

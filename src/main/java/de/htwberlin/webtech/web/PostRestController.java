@@ -6,6 +6,7 @@ import de.htwberlin.webtech.web.api.PostManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -32,17 +33,10 @@ public class PostRestController {
     }
 
     @PostMapping(path = "/api/v1/posts")
-    public ResponseEntity<Void> createpost(@RequestBody PostManipulationRequest request) throws URISyntaxException {
-        var valid = validate(request);
-        if (valid) {
+    public ResponseEntity<Void> createpost(@Valid @RequestBody PostManipulationRequest request) throws URISyntaxException {
             var post = postService.create(request);
             URI uri = new URI("/api/v1/posts/" + post.getId());
             return ResponseEntity.created(uri).build();
-        }
-        else {
-            return ResponseEntity.badRequest().build();
-        }
-
     }
 
     @PutMapping(path = "/api/v1/posts/{id}")
@@ -56,17 +50,6 @@ public class PostRestController {
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         boolean successful = postService.deleteById(id);
         return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
-    }
-
-    private boolean validate(PostManipulationRequest request){
-       return request.getUsername() != null
-           && !request.getUsername().isBlank()
-           && request.getTitle() != null
-           && !request.getTitle().isBlank()
-           && request.getContent() != null
-           && !request.getContent().isBlank()
-           && request.getBody() != null
-           && !request.getBody().isBlank();
     }
 
 }
