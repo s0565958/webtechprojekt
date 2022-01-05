@@ -36,7 +36,7 @@ public class PostRestController {
     public ResponseEntity<Void> createpost(@Valid @RequestBody PostManipulationRequest request) throws URISyntaxException {
             var post = postService.create(request);
             URI uri = new URI("/api/v1/posts/" + post.getId());
-            return ResponseEntity.created(uri).build();
+            return ResponseEntity.created(uri).header("Access-Control-Expose-Headers","Location").build();
     }
 
     @PutMapping(path = "/api/v1/posts/{id}")
