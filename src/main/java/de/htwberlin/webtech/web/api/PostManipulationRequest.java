@@ -14,7 +14,6 @@ public class PostManipulationRequest {
     private String content;
 
 
-
     public PostManipulationRequest() {}
 
     public String getTitle() {
